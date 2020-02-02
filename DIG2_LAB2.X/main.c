@@ -34,52 +34,33 @@
 #define _XTAL_FREQ 4000000
 
 void config_PUERTOS(void);
-uint8_t  banderaBoton = 0;
+void press_Subir(void);
+void press_Bajar(void);
+uint8_t banderaBoton = 0;
+uint8_t banderaUP = 0;
+uint8_t banderaDO = 0;
 
 
 
 void __interrupt() ISR(void){
-    if (INTCONbits.RBIF == 1){             // IOCB
-        if (banderaBoton == 0){
-            if (PORTBbits.RB0 == 0){
-                banderaBoton = 1;
-                INTCONbits.RBIE = 0;
-            }
-            else if (PORTBbits.RB2 == 0){
-                banderaBoton = 2;
-                INTCONbits.RBIE = 0;
-            }
-        }
+    
+    if (INTCONbits.RBIF == 1){   //atencion IOCB
         INTCONbits.RBIF = 0;
+        if (banderaBoton == 0){
+            banderaBoton = 1;
+            INTCONbits.RBIE = 0;
+        }
     }
-    
-    
       return;  
     }
 
-void main(void) {
+void main(void) { 
     config_PUERTOS();
     INTCONbits.GIE = 1;
     INTCONbits.RBIF = 0;
     while(1){
-        switch (banderaBoton){
-            case 1:
-                __delay_ms(150);
-                PORTA = PORTA + 1;
-                banderaBoton = 0;
-                INTCONbits.RBIE = 1;
-                
-                break;
-            case 2:
-                __delay_ms(150);
-                PORTA = PORTA - 1;
-                banderaBoton = 0;
-                INTCONbits.RBIE = 1;
-                break;
-            default:
-                PORTA = PORTA;
-            }
-
+        press_Subir();
+        press_Bajar();
         }
     return;
 }
@@ -103,4 +84,42 @@ void config_PUERTOS(void){
     IOCB = 0b00000101;;  //RB0 y RB2 tiene interrupcion
     INTCONbits.RBIE = 1;
     return;
+}
+void press_Subir(void){
+    if (banderaBoton == 1){
+        if (banderaUP == 0){
+            if (PORTBbits.RB0 == 0){
+                __delay_ms(69);
+                PORTA = PORTA + 1;
+                banderaBoton = 0;
+                banderaUP = 1;
+                INTCONbits.RBIE = 1;
+            }  
+        }  
+    }
+    if (banderaUP == 1){
+        if (PORTBbits.RB0 == 1){
+        __delay_ms(69);
+        banderaUP = 0;
+        }
+    }    
+}
+void press_Bajar(void){
+    if (banderaBoton == 1){
+        if (banderaDO == 0){
+            if (PORTBbits.RB2 == 0){
+                __delay_ms(69);
+                PORTA = PORTA - 1;
+                banderaBoton = 0;
+                banderaDO = 1;
+                INTCONbits.RBIE = 1;
+            }  
+        }  
+    }
+    if (banderaDO == 1){
+        if (PORTBbits.RB2 == 1){
+        __delay_ms(69);
+        banderaDO = 0;
+        }
+    }    
 }

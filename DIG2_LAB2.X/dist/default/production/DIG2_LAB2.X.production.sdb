@@ -11,17 +11,21 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"41 C:\Users\jotas\OneDrive\Documents\U\séptimo semestre\Digital 2\DIGITAL2_LAB2\DIG2_LAB2.X\main.c
+"45 C:\Users\jotas\OneDrive\Documents\U\séptimo semestre\Digital 2\DIGITAL2_LAB2\DIG2_LAB2.X\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 "60
 [v _main main `(v  1 e 1 0 ]
-"87
+"71
 [v _config_PUERTOS config_PUERTOS `(v  1 e 1 0 ]
+"91
+[v _press_Subir press_Subir `(v  1 e 1 0 ]
+"110
+[v _press_Bajar press_Bajar `(v  1 e 1 0 ]
 "166 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "228
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S54 . 1 `uc 1 RB0 1 0 :1:0 
+[s S104 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -31,8 +35,8 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "245
-[u S63 . 1 `S54 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES63  1 e 1 @6 ]
+[u S113 . 1 `S104 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES113  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "352
@@ -54,7 +58,7 @@
 ]
 [u S36 . 1 `S22 1 . 1 0 `S31 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES36  1 e 1 @11 ]
-[s S96 . 1 `uc 1 PS 1 0 :3:0 
+[s S77 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -62,12 +66,12 @@
 `uc 1 nRBPU 1 0 :1:7 
 ]
 "1366
-[s S103 . 1 `uc 1 PS0 1 0 :1:0 
+[s S84 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 ]
-[u S107 . 1 `S96 1 . 1 0 `S103 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES107  1 e 1 @129 ]
+[u S88 . 1 `S77 1 . 1 0 `S84 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES88  1 e 1 @129 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1478
@@ -84,19 +88,33 @@
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
-"37 C:\Users\jotas\OneDrive\Documents\U\séptimo semestre\Digital 2\DIGITAL2_LAB2\DIG2_LAB2.X\main.c
+"39 C:\Users\jotas\OneDrive\Documents\U\séptimo semestre\Digital 2\DIGITAL2_LAB2\DIG2_LAB2.X\main.c
 [v _banderaBoton banderaBoton `uc  1 e 1 0 ]
+"40
+[v _banderaUP banderaUP `uc  1 e 1 0 ]
+"41
+[v _banderaDO banderaDO `uc  1 e 1 0 ]
 "60
 [v _main main `(v  1 e 1 0 ]
 {
-"85
+"69
 } 0
-"87
+"91
+[v _press_Subir press_Subir `(v  1 e 1 0 ]
+{
+"109
+} 0
+"110
+[v _press_Bajar press_Bajar `(v  1 e 1 0 ]
+{
+"128
+} 0
+"71
 [v _config_PUERTOS config_PUERTOS `(v  1 e 1 0 ]
 {
-"106
+"90
 } 0
-"41
+"45
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
 "58

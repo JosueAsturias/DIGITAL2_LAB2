@@ -2651,23 +2651,23 @@ typedef uint16_t uintptr_t;
 
 
 void config_PUERTOS(void);
+void press_Subir(void);
+void press_Bajar(void);
 uint8_t banderaBoton = 0;
+uint8_t banderaUP = 0;
+uint8_t banderaDO = 0;
 
 
 
 void __attribute__((picinterrupt(("")))) ISR(void){
+
     if (INTCONbits.RBIF == 1){
-        if (banderaBoton == 0){
-            if (PORTBbits.RB0 == 0){
-                banderaBoton = 1;
-                INTCONbits.RBIE = 0;
-            }
-            else if (PORTBbits.RB2 == 0){
-                banderaBoton = 2;
-                INTCONbits.RBIE = 0;
-            }
-        }
         INTCONbits.RBIF = 0;
+        if (banderaBoton == 0){
+            banderaBoton = 1;
+            INTCONbits.RBIE = 0;
+        }
+
     }
 
 
@@ -2679,24 +2679,8 @@ void main(void) {
     INTCONbits.GIE = 1;
     INTCONbits.RBIF = 0;
     while(1){
-        switch (banderaBoton){
-            case 1:
-                _delay((unsigned long)((150)*(4000000/4000.0)));
-                PORTA = PORTA + 1;
-                banderaBoton = 0;
-                INTCONbits.RBIE = 1;
-
-                break;
-            case 2:
-                _delay((unsigned long)((150)*(4000000/4000.0)));
-                PORTA = PORTA - 1;
-                banderaBoton = 0;
-                INTCONbits.RBIE = 1;
-                break;
-            default:
-                PORTA = PORTA;
-            }
-
+        press_Subir();
+        press_Bajar();
         }
     return;
 }
@@ -2720,4 +2704,42 @@ void config_PUERTOS(void){
     IOCB = 0b00000101;;
     INTCONbits.RBIE = 1;
     return;
+}
+void press_Subir(void){
+    if (banderaBoton == 1){
+        if (banderaUP == 0){
+            if (PORTBbits.RB0 == 0){
+                _delay((unsigned long)((69)*(4000000/4000.0)));
+                PORTA = PORTA + 1;
+                banderaBoton = 0;
+                banderaUP = 1;
+                INTCONbits.RBIE = 1;
+            }
+        }
+    }
+    if (banderaUP == 1){
+        if (PORTBbits.RB0 == 1){
+        _delay((unsigned long)((69)*(4000000/4000.0)));
+        banderaUP = 0;
+        }
+    }
+}
+void press_Bajar(void){
+    if (banderaBoton == 1){
+        if (banderaDO == 0){
+            if (PORTBbits.RB2 == 0){
+                _delay((unsigned long)((69)*(4000000/4000.0)));
+                PORTA = PORTA - 1;
+                banderaBoton = 0;
+                banderaDO = 1;
+                INTCONbits.RBIE = 1;
+            }
+        }
+    }
+    if (banderaDO == 1){
+        if (PORTBbits.RB2 == 1){
+        _delay((unsigned long)((69)*(4000000/4000.0)));
+        banderaDO = 0;
+        }
+    }
 }
