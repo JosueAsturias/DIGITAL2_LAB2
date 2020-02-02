@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "Display_7.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,22 +6,10 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 14 "main.c"
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
+# 1 "Display_7.c" 2
 
 
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
+
 
 
 
@@ -2511,7 +2499,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
-# 32 "main.c" 2
+# 9 "Display_7.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdint.h" 3
@@ -2646,7 +2634,7 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 33 "main.c" 2
+# 10 "Display_7.c" 2
 
 # 1 "./Display_7.h" 1
 # 12 "./Display_7.h"
@@ -2659,109 +2647,72 @@ uint8_t numerosDisplay[16] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,
 void config2Display(uint16_t FreqOsc);
 # 38 "./Display_7.h"
 void cambioDisplay(uint8_t valUni, uint8_t valDec, uint8_t bandera);
-# 34 "main.c" 2
+# 11 "Display_7.c" 2
 
 
 
 
-
-
-void config_PUERTOS(void);
-void press_Subir(void);
-void press_Bajar(void);
-uint8_t banderaBoton = 0;
-uint8_t banderaUP = 0;
-uint8_t banderaDO = 0;
-uint8_t banderaTMR0 = 0;
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void){
-
-    if (INTCONbits.RBIF == 1){
-        INTCONbits.RBIF = 0;
-        if (banderaBoton == 0){
-            banderaBoton = 1;
-            INTCONbits.RBIE = 0;
-        }
-    }
-
-    if (INTCONbits.T0IF == 1){
-        banderaTMR0 = ~banderaTMR0;
-        cambioDisplay(9, 6, banderaTMR0);
-        INTCONbits.T0IF = 0;
-    }
-      return;
-    }
-
-void main(void) {
-    config_PUERTOS();
-    config2Display(4000);
-    INTCONbits.GIE = 1;
-    INTCONbits.RBIF = 0;
-    while(1){
-
-        press_Subir();
-        press_Bajar();
-        }
-    return;
-}
-
-void config_PUERTOS(void){
-
-    TRISD = 255;
-    TRISC = 255;
-    TRISA = 0;
-    TRISB = 0b00000101;
-    PORTA = 0;
-    PORTB = 0;
-    PORTC = 0;
+void config2Display(uint16_t FreqOsc){
+    TRISD = 0;
     PORTD = 0;
-    ANSEL = 0;
-    ANSELH = 0;
-    WPUB = 0b00000101;
-    OPTION_REGbits.nRBPU = 0;
+    TRISCbits.TRISC2 = 0;
+    TRISCbits.TRISC0 = 0;
+    PORTCbits.RC2 = 0;
+    PORTCbits.RC0 =0;
 
 
-    IOCB = 0b00000101;;
-    INTCONbits.RBIE = 1;
-    return;
+    switch (FreqOsc){
+        case 31:
+            OSCCONbits.IRCF = 0b000;
+            break;
+        case 125:
+            OSCCONbits.IRCF = 0b001;
+            break;
+        case 250:
+            OSCCONbits.IRCF = 0b010;
+            break;
+        case 500:
+            OSCCONbits.IRCF = 0b011;
+            break;
+        case 1000:
+            OSCCONbits.IRCF = 0b100;
+            break;
+        case 2000:
+            OSCCONbits.IRCF = 0b101;
+            break;
+        case 4000:
+            OSCCONbits.IRCF = 0b110;
+            break;
+        case 8000:
+            OSCCONbits.IRCF = 0b111;
+            break;
+        default:
+            OSCCONbits.IRCF = 0b110;
+    }
+
+    OPTION_REGbits.T0CS = 0;
+    OPTION_REGbits.T0SE = 0;
+    OPTION_REGbits.PSA = 0;
+    OPTION_REGbits.PS = 0b010;
+    INTCONbits.T0IF = 0;
+    INTCONbits.T0IE = 1;
+
+
 }
-void press_Subir(void){
-    if (banderaBoton == 1){
-        if (banderaUP == 0){
-            if (PORTBbits.RB0 == 0){
-                _delay((unsigned long)((69)*(4000000/4000.0)));
-                PORTA = PORTA + 1;
-                banderaBoton = 0;
-                banderaUP = 1;
-                INTCONbits.RBIE = 1;
-            }
-        }
-    }
-    if (banderaUP == 1){
-        if (PORTBbits.RB0 == 1){
-        _delay((unsigned long)((69)*(4000000/4000.0)));
-        banderaUP = 0;
-        }
-    }
-}
-void press_Bajar(void){
-    if (banderaBoton == 1){
-        if (banderaDO == 0){
-            if (PORTBbits.RB2 == 0){
-                _delay((unsigned long)((69)*(4000000/4000.0)));
-                PORTA = PORTA - 1;
-                banderaBoton = 0;
-                banderaDO = 1;
-                INTCONbits.RBIE = 1;
-            }
-        }
-    }
-    if (banderaDO == 1){
-        if (PORTBbits.RB2 == 1){
-        _delay((unsigned long)((69)*(4000000/4000.0)));
-        banderaDO = 0;
-        }
+
+void cambioDisplay(uint8_t valUni, uint8_t valDec, uint8_t bandera){
+    switch (bandera){
+        case 0:
+            PORTCbits.RC0 = 0;
+            PORTD = numerosDisplay[valUni];
+            PORTCbits.RC2 = 1;
+            break;
+        case 255:
+            PORTCbits.RC2 = 0;
+            PORTD = numerosDisplay[valDec];
+            PORTCbits.RC0 = 1;
+            break;
+        default:
+            PORTD = PORTD;
     }
 }

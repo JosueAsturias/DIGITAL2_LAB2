@@ -31,7 +31,11 @@
 
 #include <xc.h>
 #include <stdint.h>
+#include "Display_7.h"
 #define _XTAL_FREQ 4000000
+
+
+
 
 void config_PUERTOS(void);
 void press_Subir(void);
@@ -39,6 +43,7 @@ void press_Bajar(void);
 uint8_t banderaBoton = 0;
 uint8_t banderaUP = 0;
 uint8_t banderaDO = 0;
+uint8_t banderaTMR0 = 0;
 
 
 
@@ -51,14 +56,22 @@ void __interrupt() ISR(void){
             INTCONbits.RBIE = 0;
         }
     }
+    
+    if (INTCONbits.T0IF == 1){
+        banderaTMR0 = ~banderaTMR0;
+        cambioDisplay(9, 6, banderaTMR0);
+        INTCONbits.T0IF = 0;
+    }
       return;  
     }
 
 void main(void) { 
     config_PUERTOS();
+    config2Display(4000);
     INTCONbits.GIE = 1;
     INTCONbits.RBIF = 0;
     while(1){
+        
         press_Subir();
         press_Bajar();
         }
@@ -67,8 +80,8 @@ void main(void) {
 
 void config_PUERTOS(void){
     //PUERTOS
-    TRISD = 0;
-    TRISC = 0;
+    TRISD = 255;
+    TRISC = 255;
     TRISA = 0;
     TRISB = 0b00000101;
     PORTA = 0; 
