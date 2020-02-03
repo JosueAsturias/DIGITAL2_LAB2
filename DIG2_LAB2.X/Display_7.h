@@ -5,19 +5,19 @@
  * Revision history: 
  */
 
-#ifndef XC_HEADER_TEMPLATE_H
-#define	XC_HEADER_TEMPLATE_H
+#ifndef XC_HEADER_DISPLAY7
+#define	XC_HEADER_DISPLAY7
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
 
 // se debe cambiar esto de acuerdo a lo que se tenga
-#define TRport TRISD             
+#define TRport        TRISD             
 #define PUERTOdisplay PORTD
-#define Tr1 PORTCbits.RC2
-#define Tr2 PORTCbits.RC0
-#define TRpin1 TRISCbits.TRISC2
-#define TRpin2 TRISCbits.TRISC0
+#define Tr1           PORTCbits.RC2
+#define Tr2           PORTCbits.RC0
+#define TRpin1        TRISCbits.TRISC2
+#define TRpin2        TRISCbits.TRISC0
 
 uint8_t numerosDisplay[16] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,
                                 0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};
@@ -36,7 +36,7 @@ void config2Display(uint16_t FreqOsc);
  ----------------------------------------------------------------------------
  */
 
-void cambioDisplay(uint8_t valUni, uint8_t valDec, uint8_t bandera);
+void cambioDisplay(uint8_t valDec, uint8_t valUni, uint8_t bandera);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

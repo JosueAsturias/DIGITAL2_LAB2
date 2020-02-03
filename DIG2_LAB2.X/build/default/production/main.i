@@ -2648,18 +2648,32 @@ typedef int16_t intptr_t;
 typedef uint16_t uintptr_t;
 # 33 "main.c" 2
 
+
 # 1 "./Display_7.h" 1
 # 12 "./Display_7.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdint.h" 1 3
 # 12 "./Display_7.h" 2
-# 21 "./Display_7.h"
+# 22 "./Display_7.h"
 uint8_t numerosDisplay[16] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,
                                 0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};
 
 void config2Display(uint16_t FreqOsc);
-# 38 "./Display_7.h"
-void cambioDisplay(uint8_t valUni, uint8_t valDec, uint8_t bandera);
-# 34 "main.c" 2
+# 39 "./Display_7.h"
+void cambioDisplay(uint8_t valDec, uint8_t valUni, uint8_t bandera);
+# 35 "main.c" 2
+
+# 1 "./ADC.h" 1
+# 14 "./ADC.h"
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdint.h" 1 3
+# 14 "./ADC.h" 2
+
+
+void ADConfig(uint8_t oscFreq,uint8_t canal, unsigned char justificado);
+
+uint8_t AnalogRead_8(unsigned char just);
+
+void ADCinit();
+# 36 "main.c" 2
 
 
 
@@ -2673,12 +2687,19 @@ uint8_t banderaBoton = 0;
 uint8_t banderaUP = 0;
 uint8_t banderaDO = 0;
 uint8_t banderaTMR0 = 0;
-
+uint8_t banderaADC = 0;
+uint8_t valorDisplay_Dec;
+uint8_t valorDisplay_Uni;
 
 
 void __attribute__((picinterrupt(("")))) ISR(void){
 
-    if (INTCONbits.RBIF == 1){
+    if (PIR1bits.ADIF && PIE1bits.ADIE){
+        PIE1bits.ADIE = 0;
+        banderaADC = 1;
+    }
+
+    if (INTCONbits.RBIF == 1 && INTCONbits.RBIE == 1){
         INTCONbits.RBIF = 0;
         if (banderaBoton == 0){
             banderaBoton = 1;
@@ -2686,21 +2707,35 @@ void __attribute__((picinterrupt(("")))) ISR(void){
         }
     }
 
-    if (INTCONbits.T0IF == 1){
+    if (INTCONbits.T0IF == 1 && INTCONbits.T0IE == 1){
         banderaTMR0 = ~banderaTMR0;
-        cambioDisplay(9, 6, banderaTMR0);
+        cambioDisplay(valorDisplay_Uni, valorDisplay_Dec, banderaTMR0);
         INTCONbits.T0IF = 0;
     }
       return;
     }
 
+
 void main(void) {
     config_PUERTOS();
-    config2Display(4000);
+    config2Display(8000);
+    ADConfig(8, 5, 'H');
     INTCONbits.GIE = 1;
-    INTCONbits.RBIF = 0;
     while(1){
-
+        if (banderaADC == 1){
+            valorDisplay_Uni = 9;
+            uint8_t lectura = AnalogRead_8('H');
+            if(lectura > PORTA){
+                PORTEbits.RE1 = 1;
+            }
+            else if (lectura <= PORTA){
+                PORTEbits.RE1 = 0;
+            }
+            valorDisplay_Uni = lectura & 0x0F;
+            valorDisplay_Dec = (lectura & 0xF0) >> 4;
+            banderaADC = 0;
+            ADCinit();
+        }
         press_Subir();
         press_Bajar();
         }
@@ -2713,6 +2748,8 @@ void config_PUERTOS(void){
     TRISC = 255;
     TRISA = 0;
     TRISB = 0b00000101;
+    TRISE = 0;
+    PORTE = 0;
     PORTA = 0;
     PORTB = 0;
     PORTC = 0;

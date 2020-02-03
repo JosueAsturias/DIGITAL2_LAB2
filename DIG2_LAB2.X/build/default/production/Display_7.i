@@ -2640,18 +2640,18 @@ typedef uint16_t uintptr_t;
 # 12 "./Display_7.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\c90\\stdint.h" 1 3
 # 12 "./Display_7.h" 2
-# 21 "./Display_7.h"
+# 22 "./Display_7.h"
 uint8_t numerosDisplay[16] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,
                                 0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};
 
 void config2Display(uint16_t FreqOsc);
-# 38 "./Display_7.h"
-void cambioDisplay(uint8_t valUni, uint8_t valDec, uint8_t bandera);
+# 39 "./Display_7.h"
+void cambioDisplay(uint8_t valDec, uint8_t valUni, uint8_t bandera);
 # 11 "Display_7.c" 2
 
 
 
-
+uint8_t valorTMR0 = 131;
 void config2Display(uint16_t FreqOsc){
     TRISD = 0;
     PORTD = 0;
@@ -2662,6 +2662,7 @@ void config2Display(uint16_t FreqOsc){
 
 
     switch (FreqOsc){
+
         case 31:
             OSCCONbits.IRCF = 0b000;
             break;
@@ -2682,9 +2683,13 @@ void config2Display(uint16_t FreqOsc){
             break;
         case 4000:
             OSCCONbits.IRCF = 0b110;
+            OPTION_REGbits.PS = 0b110;
+            valorTMR0 = 177;
             break;
         case 8000:
             OSCCONbits.IRCF = 0b111;
+            OPTION_REGbits.PS = 0b110;
+            valorTMR0 = 98;
             break;
         default:
             OSCCONbits.IRCF = 0b110;
@@ -2693,7 +2698,7 @@ void config2Display(uint16_t FreqOsc){
     OPTION_REGbits.T0CS = 0;
     OPTION_REGbits.T0SE = 0;
     OPTION_REGbits.PSA = 0;
-    OPTION_REGbits.PS = 0b010;
+    TMR0 = valorTMR0;
     INTCONbits.T0IF = 0;
     INTCONbits.T0IE = 1;
 
@@ -2701,6 +2706,7 @@ void config2Display(uint16_t FreqOsc){
 }
 
 void cambioDisplay(uint8_t valUni, uint8_t valDec, uint8_t bandera){
+    TMR0 = valorTMR0;
     switch (bandera){
         case 0:
             PORTCbits.RC0 = 0;

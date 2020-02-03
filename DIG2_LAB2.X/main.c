@@ -31,7 +31,9 @@
 
 #include <xc.h>
 #include <stdint.h>
+#include <pic16f887.h>
 #include "Display_7.h"
+#include "ADC.h"
 #define _XTAL_FREQ 4000000
 
 
@@ -44,12 +46,19 @@ uint8_t banderaBoton = 0;
 uint8_t banderaUP = 0;
 uint8_t banderaDO = 0;
 uint8_t banderaTMR0 = 0;
-
+uint8_t banderaADC = 0;
+uint8_t valorDisplay_Dec;
+uint8_t valorDisplay_Uni;
 
 
 void __interrupt() ISR(void){
     
-    if (INTCONbits.RBIF == 1){   //atencion IOCB
+    if (PIR1bits.ADIF && PIE1bits.ADIE){
+        PIE1bits.ADIE = 0;
+        banderaADC = 1;
+    }
+    
+    if (INTCONbits.RBIF == 1 && INTCONbits.RBIE == 1){   //atencion IOCB
         INTCONbits.RBIF = 0;
         if (banderaBoton == 0){
             banderaBoton = 1;
@@ -57,21 +66,35 @@ void __interrupt() ISR(void){
         }
     }
     
-    if (INTCONbits.T0IF == 1){
+    if (INTCONbits.T0IF == 1 && INTCONbits.T0IE == 1){
         banderaTMR0 = ~banderaTMR0;
-        cambioDisplay(9, 6, banderaTMR0);
+        cambioDisplay(valorDisplay_Uni, valorDisplay_Dec, banderaTMR0);
         INTCONbits.T0IF = 0;
     }
       return;  
     }
 
+
 void main(void) { 
     config_PUERTOS();
-    config2Display(4000);
+    config2Display(8000);
+    ADConfig(8, 5, 'H');
     INTCONbits.GIE = 1;
-    INTCONbits.RBIF = 0;
     while(1){
-        
+        if (banderaADC == 1){
+            valorDisplay_Uni = 9;
+            uint8_t lectura = AnalogRead_8('H');
+            if(lectura > PORTA){
+                PORTEbits.RE1 = 1;
+            }
+            else if (lectura <= PORTA){
+                PORTEbits.RE1 = 0;
+            }
+            valorDisplay_Uni = lectura & 0x0F;
+            valorDisplay_Dec = (lectura & 0xF0) >> 4;
+            banderaADC = 0;
+            ADCinit();
+        }
         press_Subir();
         press_Bajar();
         }
@@ -84,6 +107,8 @@ void config_PUERTOS(void){
     TRISC = 255;
     TRISA = 0;
     TRISB = 0b00000101;
+    TRISE = 0;
+    PORTE = 0;
     PORTA = 0; 
     PORTB = 0; 
     PORTC = 0; 

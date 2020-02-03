@@ -1,7 +1,29 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
-"465 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h
+"543 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 543:     struct {
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ]
+"542
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 542: typedef union {
+[u S18 `S19 1 ]
+[n S18 . . ]
+"553
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 553: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x00C)));
+[v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
+"1708
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 1708:     struct {
+[s S63 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S63 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE ]
+"1707
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 1707: typedef union {
+[u S62 `S63 1 ]
+[n S62 . . ]
+"1718
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 1718: extern volatile PIE1bits_t PIE1bits __attribute__((address(0x08C)));
+[v _PIE1bits `VS62 ~T0 @X0 0 e@140 ]
+"465
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 465:     struct {
 [s S16 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S16 . RBIF INTF T0IF RBIE INTE T0IE PEIE GIE ]
@@ -16,21 +38,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 "482
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 482: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
 [v _INTCONbits `VS15 ~T0 @X0 0 e@11 ]
-"38 ./Display_7.h
-[; ;./Display_7.h: 38: void cambioDisplay(uint8_t valUni, uint8_t valDec, uint8_t bandera);
+"39 ./Display_7.h
+[; ;./Display_7.h: 39: void cambioDisplay(uint8_t valDec, uint8_t valUni, uint8_t bandera);
 [v _cambioDisplay `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 [p mainexit ]
-"40 main.c
-[; ;main.c: 40: void config_PUERTOS(void);
+"42 main.c
+[; ;main.c: 42: void config_PUERTOS(void);
 [v _config_PUERTOS `(v ~T0 @X0 0 ef ]
-"24 ./Display_7.h
-[; ;./Display_7.h: 24: void config2Display(uint16_t FreqOsc);
+"25 ./Display_7.h
+[; ;./Display_7.h: 25: void config2Display(uint16_t FreqOsc);
 [v _config2Display `(v ~T0 @X0 0 ef1`ui ]
-"41 main.c
-[; ;main.c: 41: void press_Subir(void);
+"16 ./ADC.h
+[; ;./ADC.h: 16: void ADConfig(uint8_t oscFreq,uint8_t canal, unsigned char justificado);
+[v _ADConfig `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+"18
+[; ;./ADC.h: 18: uint8_t AnalogRead_8(unsigned char just);
+[v _AnalogRead_8 `(uc ~T0 @X0 0 ef1`uc ]
+"166 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
+"420
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 420:     struct {
+[s S14 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S14 . RE0 RE1 RE2 RE3 ]
+"419
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 419: typedef union {
+[u S13 `S14 1 ]
+[n S13 . . ]
+"427
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 427: extern volatile PORTEbits_t PORTEbits __attribute__((address(0x009)));
+[v _PORTEbits `VS13 ~T0 @X0 0 e@9 ]
+"20 ./ADC.h
+[; ;./ADC.h: 20: void ADCinit();
+[v _ADCinit `(v ~T0 @X0 0 e? ]
+"43 main.c
+[; ;main.c: 43: void press_Subir(void);
 [v _press_Subir `(v ~T0 @X0 0 ef ]
-"42
-[; ;main.c: 42: void press_Bajar(void);
+"44
+[; ;main.c: 44: void press_Bajar(void);
 [v _press_Bajar `(v ~T0 @X0 0 ef ]
 "1602 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
@@ -44,9 +89,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1478
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 1478: extern volatile unsigned char TRISB __attribute__((address(0x086)));
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
-"166
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
-[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
+"1664
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 1664: extern volatile unsigned char TRISE __attribute__((address(0x089)));
+[v _TRISE `Vuc ~T0 @X0 0 e@137 ]
+"414
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 414: extern volatile unsigned char PORTE __attribute__((address(0x009)));
+[v _PORTE `Vuc ~T0 @X0 0 e@9 ]
 "228
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 228: extern volatile unsigned char PORTB __attribute__((address(0x006)));
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
@@ -356,8 +404,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"21 ./Display_7.h
-[; ;./Display_7.h: 21: uint8_t numerosDisplay[16] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,
+"22 ./Display_7.h
+[; ;./Display_7.h: 22: uint8_t numerosDisplay[16] = {0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,
 [v _numerosDisplay `uc ~T0 @X0 -> 16 `i e ]
 [i _numerosDisplay
 :U ..
@@ -379,322 +427,405 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 113 `i `uc
 ..
 ]
-"43 main.c
-[; ;main.c: 43: uint8_t banderaBoton = 0;
+"45 main.c
+[; ;main.c: 45: uint8_t banderaBoton = 0;
 [v _banderaBoton `uc ~T0 @X0 1 e ]
 [i _banderaBoton
 -> -> 0 `i `uc
 ]
-"44
-[; ;main.c: 44: uint8_t banderaUP = 0;
+"46
+[; ;main.c: 46: uint8_t banderaUP = 0;
 [v _banderaUP `uc ~T0 @X0 1 e ]
 [i _banderaUP
 -> -> 0 `i `uc
 ]
-"45
-[; ;main.c: 45: uint8_t banderaDO = 0;
+"47
+[; ;main.c: 47: uint8_t banderaDO = 0;
 [v _banderaDO `uc ~T0 @X0 1 e ]
 [i _banderaDO
 -> -> 0 `i `uc
 ]
-"46
-[; ;main.c: 46: uint8_t banderaTMR0 = 0;
+"48
+[; ;main.c: 48: uint8_t banderaTMR0 = 0;
 [v _banderaTMR0 `uc ~T0 @X0 1 e ]
 [i _banderaTMR0
 -> -> 0 `i `uc
 ]
-[v $root$_ISR `(v ~T0 @X0 0 e ]
+"49
+[; ;main.c: 49: uint8_t banderaADC = 0;
+[v _banderaADC `uc ~T0 @X0 1 e ]
+[i _banderaADC
+-> -> 0 `i `uc
+]
 "50
-[; ;main.c: 50: void __attribute__((picinterrupt(("")))) ISR(void){
+[; ;main.c: 50: uint8_t valorDisplay_Dec;
+[v _valorDisplay_Dec `uc ~T0 @X0 1 e ]
+"51
+[; ;main.c: 51: uint8_t valorDisplay_Uni;
+[v _valorDisplay_Uni `uc ~T0 @X0 1 e ]
+[v $root$_ISR `(v ~T0 @X0 0 e ]
+"54
+[; ;main.c: 54: void __attribute__((picinterrupt(("")))) ISR(void){
 [v _ISR `(v ~T1 @X0 1 ef ]
 {
 [e :U _ISR ]
 [f ]
-"52
-[; ;main.c: 52:     if (INTCONbits.RBIF == 1){
-[e $ ! == -> . . _INTCONbits 0 0 `i -> 1 `i 139  ]
-{
-"53
-[; ;main.c: 53:         INTCONbits.RBIF = 0;
-[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-"54
-[; ;main.c: 54:         if (banderaBoton == 0){
-[e $ ! == -> _banderaBoton `i -> 0 `i 140  ]
-{
-"55
-[; ;main.c: 55:             banderaBoton = 1;
-[e = _banderaBoton -> -> 1 `i `uc ]
 "56
-[; ;main.c: 56:             INTCONbits.RBIE = 0;
-[e = . . _INTCONbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 56:     if (PIR1bits.ADIF && PIE1bits.ADIE){
+[e $ ! && != -> . . _PIR1bits 0 6 `i -> 0 `i != -> . . _PIE1bits 0 6 `i -> 0 `i 139  ]
+{
 "57
-[; ;main.c: 57:         }
-}
-[e :U 140 ]
+[; ;main.c: 57:         PIE1bits.ADIE = 0;
+[e = . . _PIE1bits 0 6 -> -> 0 `i `uc ]
 "58
-[; ;main.c: 58:     }
+[; ;main.c: 58:         banderaADC = 1;
+[e = _banderaADC -> -> 1 `i `uc ]
+"59
+[; ;main.c: 59:     }
 }
 [e :U 139 ]
-"60
-[; ;main.c: 60:     if (INTCONbits.T0IF == 1){
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 141  ]
-{
 "61
-[; ;main.c: 61:         banderaTMR0 = ~banderaTMR0;
-[e = _banderaTMR0 -> ~ -> _banderaTMR0 `i `uc ]
+[; ;main.c: 61:     if (INTCONbits.RBIF == 1 && INTCONbits.RBIE == 1){
+[e $ ! && == -> . . _INTCONbits 0 0 `i -> 1 `i == -> . . _INTCONbits 0 3 `i -> 1 `i 140  ]
+{
 "62
-[; ;main.c: 62:         cambioDisplay(9, 6, banderaTMR0);
-[e ( _cambioDisplay (3 , , -> -> 9 `i `uc -> -> 6 `i `uc _banderaTMR0 ]
+[; ;main.c: 62:         INTCONbits.RBIF = 0;
+[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
 "63
-[; ;main.c: 63:         INTCONbits.T0IF = 0;
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 63:         if (banderaBoton == 0){
+[e $ ! == -> _banderaBoton `i -> 0 `i 141  ]
+{
 "64
-[; ;main.c: 64:     }
+[; ;main.c: 64:             banderaBoton = 1;
+[e = _banderaBoton -> -> 1 `i `uc ]
+"65
+[; ;main.c: 65:             INTCONbits.RBIE = 0;
+[e = . . _INTCONbits 0 3 -> -> 0 `i `uc ]
+"66
+[; ;main.c: 66:         }
 }
 [e :U 141 ]
-"65
-[; ;main.c: 65:       return;
+"67
+[; ;main.c: 67:     }
+}
+[e :U 140 ]
+"69
+[; ;main.c: 69:     if (INTCONbits.T0IF == 1 && INTCONbits.T0IE == 1){
+[e $ ! && == -> . . _INTCONbits 0 2 `i -> 1 `i == -> . . _INTCONbits 0 5 `i -> 1 `i 142  ]
+{
+"70
+[; ;main.c: 70:         banderaTMR0 = ~banderaTMR0;
+[e = _banderaTMR0 -> ~ -> _banderaTMR0 `i `uc ]
+"71
+[; ;main.c: 71:         cambioDisplay(valorDisplay_Uni, valorDisplay_Dec, banderaTMR0);
+[e ( _cambioDisplay (3 , , _valorDisplay_Uni _valorDisplay_Dec _banderaTMR0 ]
+"72
+[; ;main.c: 72:         INTCONbits.T0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"73
+[; ;main.c: 73:     }
+}
+[e :U 142 ]
+"74
+[; ;main.c: 74:       return;
 [e $UE 138  ]
-"66
-[; ;main.c: 66:     }
+"75
+[; ;main.c: 75:     }
 [e :UE 138 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"68
-[; ;main.c: 68: void main(void) {
+"78
+[; ;main.c: 78: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"69
-[; ;main.c: 69:     config_PUERTOS();
-[e ( _config_PUERTOS ..  ]
-"70
-[; ;main.c: 70:     config2Display(4000);
-[e ( _config2Display (1 -> -> 4000 `i `ui ]
-"71
-[; ;main.c: 71:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"72
-[; ;main.c: 72:     INTCONbits.RBIF = 0;
-[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-"73
-[; ;main.c: 73:     while(1){
-[e :U 144 ]
-{
-"75
-[; ;main.c: 75:         press_Subir();
-[e ( _press_Subir ..  ]
-"76
-[; ;main.c: 76:         press_Bajar();
-[e ( _press_Bajar ..  ]
-"77
-[; ;main.c: 77:         }
-}
-[e :U 143 ]
-[e $U 144  ]
-[e :U 145 ]
-"78
-[; ;main.c: 78:     return;
-[e $UE 142  ]
 "79
-[; ;main.c: 79: }
-[e :UE 142 ]
-}
+[; ;main.c: 79:     config_PUERTOS();
+[e ( _config_PUERTOS ..  ]
+"80
+[; ;main.c: 80:     config2Display(8000);
+[e ( _config2Display (1 -> -> 8000 `i `ui ]
 "81
-[; ;main.c: 81: void config_PUERTOS(void){
+[; ;main.c: 81:     ADConfig(8, 5, 'H');
+[e ( _ADConfig (3 , , -> -> 8 `i `uc -> -> 5 `i `uc -> -> 72 `ui `uc ]
+"82
+[; ;main.c: 82:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"83
+[; ;main.c: 83:     while(1){
+[e :U 145 ]
+{
+"84
+[; ;main.c: 84:         if (banderaADC == 1){
+[e $ ! == -> _banderaADC `i -> 1 `i 147  ]
+{
+"85
+[; ;main.c: 85:             valorDisplay_Uni = 9;
+[e = _valorDisplay_Uni -> -> 9 `i `uc ]
+"86
+[; ;main.c: 86:             uint8_t lectura = AnalogRead_8('H');
+[v _lectura `uc ~T0 @X0 1 a ]
+[e = _lectura ( _AnalogRead_8 (1 -> -> 72 `ui `uc ]
+"87
+[; ;main.c: 87:             if(lectura > PORTA){
+[e $ ! > -> _lectura `i -> _PORTA `i 148  ]
+{
+"88
+[; ;main.c: 88:                 PORTEbits.RE1 = 1;
+[e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
+"89
+[; ;main.c: 89:             }
+}
+[e $U 149  ]
+"90
+[; ;main.c: 90:             else if (lectura <= PORTA){
+[e :U 148 ]
+[e $ ! <= -> _lectura `i -> _PORTA `i 150  ]
+{
+"91
+[; ;main.c: 91:                 PORTEbits.RE1 = 0;
+[e = . . _PORTEbits 0 1 -> -> 0 `i `uc ]
+"92
+[; ;main.c: 92:             }
+}
+[e :U 150 ]
+[e :U 149 ]
+"93
+[; ;main.c: 93:             valorDisplay_Uni = lectura & 0x0F;
+[e = _valorDisplay_Uni -> & -> _lectura `i -> 15 `i `uc ]
+"94
+[; ;main.c: 94:             valorDisplay_Dec = (lectura & 0xF0) >> 4;
+[e = _valorDisplay_Dec -> >> & -> _lectura `i -> 240 `i -> 4 `i `uc ]
+"95
+[; ;main.c: 95:             banderaADC = 0;
+[e = _banderaADC -> -> 0 `i `uc ]
+"96
+[; ;main.c: 96:             ADCinit();
+[e ( _ADCinit ..  ]
+"97
+[; ;main.c: 97:         }
+}
+[e :U 147 ]
+"98
+[; ;main.c: 98:         press_Subir();
+[e ( _press_Subir ..  ]
+"99
+[; ;main.c: 99:         press_Bajar();
+[e ( _press_Bajar ..  ]
+"100
+[; ;main.c: 100:         }
+}
+[e :U 144 ]
+[e $U 145  ]
+[e :U 146 ]
+"101
+[; ;main.c: 101:     return;
+[e $UE 143  ]
+"102
+[; ;main.c: 102: }
+[e :UE 143 ]
+}
+"104
+[; ;main.c: 104: void config_PUERTOS(void){
 [v _config_PUERTOS `(v ~T0 @X0 1 ef ]
 {
 [e :U _config_PUERTOS ]
 [f ]
-"83
-[; ;main.c: 83:     TRISD = 255;
+"106
+[; ;main.c: 106:     TRISD = 255;
 [e = _TRISD -> -> 255 `i `uc ]
-"84
-[; ;main.c: 84:     TRISC = 255;
+"107
+[; ;main.c: 107:     TRISC = 255;
 [e = _TRISC -> -> 255 `i `uc ]
-"85
-[; ;main.c: 85:     TRISA = 0;
+"108
+[; ;main.c: 108:     TRISA = 0;
 [e = _TRISA -> -> 0 `i `uc ]
-"86
-[; ;main.c: 86:     TRISB = 0b00000101;
+"109
+[; ;main.c: 109:     TRISB = 0b00000101;
 [e = _TRISB -> -> 5 `i `uc ]
-"87
-[; ;main.c: 87:     PORTA = 0;
+"110
+[; ;main.c: 110:     TRISE = 0;
+[e = _TRISE -> -> 0 `i `uc ]
+"111
+[; ;main.c: 111:     PORTE = 0;
+[e = _PORTE -> -> 0 `i `uc ]
+"112
+[; ;main.c: 112:     PORTA = 0;
 [e = _PORTA -> -> 0 `i `uc ]
-"88
-[; ;main.c: 88:     PORTB = 0;
+"113
+[; ;main.c: 113:     PORTB = 0;
 [e = _PORTB -> -> 0 `i `uc ]
-"89
-[; ;main.c: 89:     PORTC = 0;
+"114
+[; ;main.c: 114:     PORTC = 0;
 [e = _PORTC -> -> 0 `i `uc ]
-"90
-[; ;main.c: 90:     PORTD = 0;
+"115
+[; ;main.c: 115:     PORTD = 0;
 [e = _PORTD -> -> 0 `i `uc ]
-"91
-[; ;main.c: 91:     ANSEL = 0;
+"116
+[; ;main.c: 116:     ANSEL = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"92
-[; ;main.c: 92:     ANSELH = 0;
+"117
+[; ;main.c: 117:     ANSELH = 0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"93
-[; ;main.c: 93:     WPUB = 0b00000101;
+"118
+[; ;main.c: 118:     WPUB = 0b00000101;
 [e = _WPUB -> -> 5 `i `uc ]
-"94
-[; ;main.c: 94:     OPTION_REGbits.nRBPU = 0;
+"119
+[; ;main.c: 119:     OPTION_REGbits.nRBPU = 0;
 [e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
-"97
-[; ;main.c: 97:     IOCB = 0b00000101;;
+"122
+[; ;main.c: 122:     IOCB = 0b00000101;;
 [e = _IOCB -> -> 5 `i `uc ]
-"98
-[; ;main.c: 98:     INTCONbits.RBIE = 1;
+"123
+[; ;main.c: 123:     INTCONbits.RBIE = 1;
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"99
-[; ;main.c: 99:     return;
-[e $UE 146  ]
-"100
-[; ;main.c: 100: }
-[e :UE 146 ]
+"124
+[; ;main.c: 124:     return;
+[e $UE 151  ]
+"125
+[; ;main.c: 125: }
+[e :UE 151 ]
 }
-"101
-[; ;main.c: 101: void press_Subir(void){
+"126
+[; ;main.c: 126: void press_Subir(void){
 [v _press_Subir `(v ~T0 @X0 1 ef ]
 {
 [e :U _press_Subir ]
 [f ]
-"102
-[; ;main.c: 102:     if (banderaBoton == 1){
-[e $ ! == -> _banderaBoton `i -> 1 `i 148  ]
+"127
+[; ;main.c: 127:     if (banderaBoton == 1){
+[e $ ! == -> _banderaBoton `i -> 1 `i 153  ]
 {
-"103
-[; ;main.c: 103:         if (banderaUP == 0){
-[e $ ! == -> _banderaUP `i -> 0 `i 149  ]
+"128
+[; ;main.c: 128:         if (banderaUP == 0){
+[e $ ! == -> _banderaUP `i -> 0 `i 154  ]
 {
-"104
-[; ;main.c: 104:             if (PORTBbits.RB0 == 0){
-[e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 150  ]
+"129
+[; ;main.c: 129:             if (PORTBbits.RB0 == 0){
+[e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 155  ]
 {
-"105
-[; ;main.c: 105:                 _delay((unsigned long)((69)*(4000000/4000.0)));
+"130
+[; ;main.c: 130:                 _delay((unsigned long)((69)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 69 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"106
-[; ;main.c: 106:                 PORTA = PORTA + 1;
+"131
+[; ;main.c: 131:                 PORTA = PORTA + 1;
 [e = _PORTA -> + -> _PORTA `i -> 1 `i `uc ]
-"107
-[; ;main.c: 107:                 banderaBoton = 0;
+"132
+[; ;main.c: 132:                 banderaBoton = 0;
 [e = _banderaBoton -> -> 0 `i `uc ]
-"108
-[; ;main.c: 108:                 banderaUP = 1;
+"133
+[; ;main.c: 133:                 banderaUP = 1;
 [e = _banderaUP -> -> 1 `i `uc ]
-"109
-[; ;main.c: 109:                 INTCONbits.RBIE = 1;
+"134
+[; ;main.c: 134:                 INTCONbits.RBIE = 1;
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"110
-[; ;main.c: 110:             }
+"135
+[; ;main.c: 135:             }
 }
-[e :U 150 ]
-"111
-[; ;main.c: 111:         }
+[e :U 155 ]
+"136
+[; ;main.c: 136:         }
 }
-[e :U 149 ]
-"112
-[; ;main.c: 112:     }
+[e :U 154 ]
+"137
+[; ;main.c: 137:     }
 }
-[e :U 148 ]
-"113
-[; ;main.c: 113:     if (banderaUP == 1){
-[e $ ! == -> _banderaUP `i -> 1 `i 151  ]
+[e :U 153 ]
+"138
+[; ;main.c: 138:     if (banderaUP == 1){
+[e $ ! == -> _banderaUP `i -> 1 `i 156  ]
 {
-"114
-[; ;main.c: 114:         if (PORTBbits.RB0 == 1){
-[e $ ! == -> . . _PORTBbits 0 0 `i -> 1 `i 152  ]
+"139
+[; ;main.c: 139:         if (PORTBbits.RB0 == 1){
+[e $ ! == -> . . _PORTBbits 0 0 `i -> 1 `i 157  ]
 {
-"115
-[; ;main.c: 115:         _delay((unsigned long)((69)*(4000000/4000.0)));
+"140
+[; ;main.c: 140:         _delay((unsigned long)((69)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 69 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"116
-[; ;main.c: 116:         banderaUP = 0;
+"141
+[; ;main.c: 141:         banderaUP = 0;
 [e = _banderaUP -> -> 0 `i `uc ]
-"117
-[; ;main.c: 117:         }
+"142
+[; ;main.c: 142:         }
 }
-[e :U 152 ]
-"118
-[; ;main.c: 118:     }
+[e :U 157 ]
+"143
+[; ;main.c: 143:     }
 }
-[e :U 151 ]
-"119
-[; ;main.c: 119: }
-[e :UE 147 ]
+[e :U 156 ]
+"144
+[; ;main.c: 144: }
+[e :UE 152 ]
 }
-"120
-[; ;main.c: 120: void press_Bajar(void){
+"145
+[; ;main.c: 145: void press_Bajar(void){
 [v _press_Bajar `(v ~T0 @X0 1 ef ]
 {
 [e :U _press_Bajar ]
 [f ]
-"121
-[; ;main.c: 121:     if (banderaBoton == 1){
-[e $ ! == -> _banderaBoton `i -> 1 `i 154  ]
+"146
+[; ;main.c: 146:     if (banderaBoton == 1){
+[e $ ! == -> _banderaBoton `i -> 1 `i 159  ]
 {
-"122
-[; ;main.c: 122:         if (banderaDO == 0){
-[e $ ! == -> _banderaDO `i -> 0 `i 155  ]
+"147
+[; ;main.c: 147:         if (banderaDO == 0){
+[e $ ! == -> _banderaDO `i -> 0 `i 160  ]
 {
-"123
-[; ;main.c: 123:             if (PORTBbits.RB2 == 0){
-[e $ ! == -> . . _PORTBbits 0 2 `i -> 0 `i 156  ]
+"148
+[; ;main.c: 148:             if (PORTBbits.RB2 == 0){
+[e $ ! == -> . . _PORTBbits 0 2 `i -> 0 `i 161  ]
 {
-"124
-[; ;main.c: 124:                 _delay((unsigned long)((69)*(4000000/4000.0)));
+"149
+[; ;main.c: 149:                 _delay((unsigned long)((69)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 69 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"125
-[; ;main.c: 125:                 PORTA = PORTA - 1;
+"150
+[; ;main.c: 150:                 PORTA = PORTA - 1;
 [e = _PORTA -> - -> _PORTA `i -> 1 `i `uc ]
-"126
-[; ;main.c: 126:                 banderaBoton = 0;
+"151
+[; ;main.c: 151:                 banderaBoton = 0;
 [e = _banderaBoton -> -> 0 `i `uc ]
-"127
-[; ;main.c: 127:                 banderaDO = 1;
+"152
+[; ;main.c: 152:                 banderaDO = 1;
 [e = _banderaDO -> -> 1 `i `uc ]
-"128
-[; ;main.c: 128:                 INTCONbits.RBIE = 1;
+"153
+[; ;main.c: 153:                 INTCONbits.RBIE = 1;
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"129
-[; ;main.c: 129:             }
+"154
+[; ;main.c: 154:             }
 }
-[e :U 156 ]
-"130
-[; ;main.c: 130:         }
+[e :U 161 ]
+"155
+[; ;main.c: 155:         }
 }
-[e :U 155 ]
-"131
-[; ;main.c: 131:     }
+[e :U 160 ]
+"156
+[; ;main.c: 156:     }
 }
-[e :U 154 ]
-"132
-[; ;main.c: 132:     if (banderaDO == 1){
-[e $ ! == -> _banderaDO `i -> 1 `i 157  ]
+[e :U 159 ]
+"157
+[; ;main.c: 157:     if (banderaDO == 1){
+[e $ ! == -> _banderaDO `i -> 1 `i 162  ]
 {
-"133
-[; ;main.c: 133:         if (PORTBbits.RB2 == 1){
-[e $ ! == -> . . _PORTBbits 0 2 `i -> 1 `i 158  ]
+"158
+[; ;main.c: 158:         if (PORTBbits.RB2 == 1){
+[e $ ! == -> . . _PORTBbits 0 2 `i -> 1 `i 163  ]
 {
-"134
-[; ;main.c: 134:         _delay((unsigned long)((69)*(4000000/4000.0)));
+"159
+[; ;main.c: 159:         _delay((unsigned long)((69)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 69 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"135
-[; ;main.c: 135:         banderaDO = 0;
+"160
+[; ;main.c: 160:         banderaDO = 0;
 [e = _banderaDO -> -> 0 `i `uc ]
-"136
-[; ;main.c: 136:         }
+"161
+[; ;main.c: 161:         }
 }
-[e :U 158 ]
-"137
-[; ;main.c: 137:     }
+[e :U 163 ]
+"162
+[; ;main.c: 162:     }
 }
-[e :U 157 ]
-"138
-[; ;main.c: 138: }
-[e :UE 153 ]
+[e :U 162 ]
+"163
+[; ;main.c: 163: }
+[e :UE 158 ]
 }
